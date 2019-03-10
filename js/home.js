@@ -32,6 +32,7 @@ function init() {
     $("a").click(function(e) {
         if($(this).attr("href").charAt(0) == "#") {
             e.preventDefault();
+            LastMenuChange = Date.now() - 200; // Delay processing sidebar so the wrong active item isn't picked 
             tryScrollToAnchor($(this).attr("href"));
             return false;
         }
