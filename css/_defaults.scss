@@ -1,0 +1,327 @@
+clear, .clear {
+    &:after,
+    &:before {
+        content: ' ';
+        display: block;
+        clear: both;
+    }
+}
+
+html, body {
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    color: white;
+    line-height: 1;
+    background: #4f3975;
+    
+    @include appnav {
+        font-size: 15px;
+    }
+}
+
+body {
+    @extend clear;
+    background: linear-gradient(140deg, #475989 0%, #382858 100%);
+    //background-image: url(../media/bg_815decacfdebafd683c2c3272857337b.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    
+    @include appnav {
+        padding-bottom: 30px;
+    }
+    
+}
+
+.pages {
+    @extend clear;
+    
+    width: 100%;
+    min-height: 100vh;
+    //overflow: auto;
+    padding-left: 300px;
+    box-sizing: border-box;
+    padding-right: 70px;
+    
+    @include appnav {
+        padding: 30px;
+    }
+    @include mobile {
+        padding: 0;
+    }
+    
+    .icon {
+        display: inline-block;
+        vertical-align: middle;
+        
+        &:before, &:after {
+            display: none;
+        }
+        
+        &:hover, &:active {
+            svg {
+                opacity: 0.65;
+            }
+        }
+        
+        svg {
+            width: 35px;
+            fill: white;
+        }
+    }
+    
+    span + span {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 10px;
+    }
+
+    p {
+        color: $cTextDefault;
+        line-height: 1.5;
+        text-align: justify;
+        
+
+        &.text-center {
+            text-align: center;
+        }
+        
+        &.find-me-on {
+            margin-top: 20px;
+            font-weight: bold;
+            color: white !important;
+            font-size: 16px;
+            text-align: center;
+        }
+        
+        @include tablet {
+            text-align: left;
+        }
+        
+        strong, a {
+            color: white;
+        }
+        
+        a {
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+
+            span {
+                position: relative;
+            }
+            
+            &:hover, &:active {
+                &:after {
+                    transform: scale(1, 1);
+                }
+            }
+
+            &:before, &:after {
+                display: block;
+                content: " ";
+                position: absolute;
+                bottom: 1px;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background: rgba(#7cbdd3, 1);
+                border-radius: 2px;
+            }
+            
+            &:after {
+                background: white;
+                transform: scale(0, 1);
+                transform-origin: 0 0;
+                transition: transform 0.43s cubic-bezier(0.185, 1, 0, 1);
+                will-change: transform;
+            }
+        }
+        
+    }
+    
+    .header-large {
+        font-weight: 600;
+        font-size: 48px;
+        padding-bottom: 0;
+        text-transform: uppercase;
+        
+        @include appnav {
+            font-size: 36px;
+        }
+        
+        & + p {
+            margin-top: -30px;
+            padding-top: 0;
+            padding-bottom: 30px;
+            color: $cTextDefault;
+            text-align: center;
+            font-size: 18px;
+            
+            @include appnav {
+                margin-top: -24px;
+                font-size: 16px;
+            }
+            
+            strong {
+                color: $cTextDefault;
+            }
+        }
+    }
+    
+    .header-med {
+        font-weight: 600;
+        font-size: 48px;
+        padding-bottom: 0;
+        text-transform: uppercase;
+        padding-top: 40px;
+        
+        @include appnav {
+            font-size: 32px;
+        }
+        
+        & + p {
+            margin-top: -30px;
+            padding-top: 0;
+            padding-bottom: 30px;
+            padding-bottom: 40px;
+            color: $cTextDefault;
+            text-align: center;
+            font-size: 18px;
+            
+            @include appnav {
+                margin-top: -20px;
+                font-size: 16px;
+            }
+            
+            strong {
+                color: $cTextDefault;
+            }
+        }
+    }
+}
+
+.page {
+    padding-top: 60px;
+    //opacity: 0.7;
+    //transition: opacity 0.75s;
+    
+    &.scrolledEnteredBottom {
+        //opacity: 1;
+    }
+    
+    & + .page {
+        margin-top: -110px;
+        //padding-top: 100px;
+    }
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 1080px;
+    padding: 20px;
+    box-sizing: border-box;
+    margin: auto;    
+}
+
+.narrow-wrapper {
+    width: 100%;
+    max-width: 620px;
+    padding: 20px;
+    box-sizing: border-box;
+    margin: auto;
+}
+
+#me {
+    margin-bottom: 60px;
+    @include mobile {
+        margin-top: -40px;
+    }
+    
+    &:before {
+        content: ' ';
+        display: none;
+        background: #33365a;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 245px;
+        
+        @include appnav {
+            display: block;
+            height: 280px;
+            background-image: url(../media/bg_815decacfdebafd683c2c3272857337b.jpg);
+            background-size: cover;
+        }
+        @include mobile {
+            height: 175px;
+        }
+    }
+    
+    .me {
+        border-radius: 100%;
+        width: 200px;
+        height: 200px;
+        border: 8px solid white;
+        margin: auto;
+        display: block;
+        will-change: transform;
+        box-shadow: 0 5px 10px -3px rgba(25, 22, 29, 0.3);
+        
+        @include appnav {
+            border-width: 6px;
+        }
+        
+        @include mobile {
+            width: 160px;
+            height: 160px;
+        }
+    }
+    
+    .tags {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: center;
+        
+        margin: -15px 0 30px;
+        
+        span {
+            display: block;
+            float: none;
+            width: auto;
+            margin-bottom: 5px;
+        }
+    }
+}
+
+.text-center {
+    text-align: center;
+}
+
+p {
+    line-height: 1.6;
+    
+}
+
+
+hr {
+    display: block;
+    width: 500px;
+    width: 100%;
+    max-width: 900px;
+    background: linear-gradient(to right, rgba(99,136,180,1) 0%,rgba(124,189,211,1) 100%);
+    background: rgba(white, 0.25);
+    height: 1px;
+    outline: none;
+    border: none;
+}
+
+
+#footer {
+    p {
+        text-align: center;
+        font-size: 13px;
+    }
+}

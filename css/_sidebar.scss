@@ -1,0 +1,169 @@
+.sidebar {
+    //padding: 23px;
+    position: fixed;
+    top:0;
+    left:0;
+    height: 100vh;
+    box-sizing: border-box;
+    z-index: 4;
+    
+    @include appnav {
+        top: auto;
+        bottom: 0;
+        height: 40px;
+        width: 100%;
+        box-shadow: 0 4px 15px #19191f;
+    }
+    
+    .inner {
+        background: white;
+        //border-radius: 5px;
+        height: 100%;
+        box-sizing: border-box;
+        padding: 21px;
+        position: relative;
+        width: 217px;
+        
+        @include appnav {
+            width: 100%;
+            padding: 4px 10px;
+        }
+        
+    }
+    .logo {
+        img {
+            width: 188px;
+            padding-left: 28px;
+            will-change: transform;
+            padding-bottom: 21px;
+        }
+    }
+    nav {
+        position: relative;
+        top: 50%;
+        margin-top: -100px;
+        
+        @include appnav {
+            display: flex;
+            top: 0;
+            margin: 0;
+            flex-direction: row;
+            flex-wrap: nowrap;
+        }
+        
+        a {
+            width: 216px;
+            border-radius: 100px;
+            color: #201237;
+            text-decoration: none;
+            box-sizing: border-box;
+            padding: 11px 24px;
+            text-transform: uppercase;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 1px;
+            transition: width 0.3s, background 0.3s, color 0.21s cubic-bezier(0.000, 1.005, 0.685, 0.995);
+            border-radius: 50px;
+            overflow: hidden;
+            position: relative;
+            will-change: transform;
+            
+            @include appnav {
+                width: 90px;
+                margin: 0 2px;
+            }
+            
+            &:before {
+                content: ' ';
+                display: block;
+                position: absolute;
+                top: -128px;
+                left: -20px;
+                width: 256px;
+                height: 256px;
+                border-radius: 100%;
+                background: linear-gradient(to right, rgba(79,58,117,1) 0%, rgba(124,189,211,1) 100%);
+                z-index: 1;
+                transition: transform 0.93s cubic-bezier(0.000, 1.000, 0.685, 1.00);
+                transform: scale(0);
+                transform-origin: 0 152px;
+                transform-origin: 0 30px;
+                transform-origin: 260px 230px;
+                will-change: transform;
+                
+                @include appnav {
+                    width: 96px;
+                    height: 96px;
+                    transform-origin: 50% 10%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%) scale(0);
+                    transition: transform 0.93s cubic-bezier(0.000, 1.000, 0.685, 1.00);
+                }
+            }
+            
+            @include appnav {
+                padding: 7px;
+                text-align: center;
+            }
+            
+            &:hover {
+                background: linear-gradient(to right, rgba(210,210,210,1) 0%, rgba(210,210,210,0) 60%, rgba(210,210,210,0) 100%);
+            }
+            
+            &.active {
+                &:before{
+                    transform: scale(1);
+                    transform-origin: 0 30px;
+                    @include appnav {
+                        transform-origin: 50% 90%;
+                        transform: translate(-50%, -50%) scale(1);
+                    }
+                }
+                color: white;
+                
+            }
+            
+            span {
+                vertical-align: middle;
+                position: relative;
+                z-index: 2;
+            }
+        }
+    }
+    .footer {
+        position: absolute;
+        bottom: 21px;
+        left:0;
+        font-size: 11px;
+        color: #4F3A75;
+        text-align: center;
+        font-weight: 500;
+        width: 100%;
+        
+        @include appnav {
+            display: none;
+        }
+        
+        a {
+            color: #201237;
+            text-decoration: none;
+        }
+        
+        span {
+            display: inline-block;
+            vertical-align: middle;
+            & + span {
+                margin-left: 8px;
+            }
+            
+        }
+        
+        svg {
+            width: 24px;
+            height: 24px;
+            fill: #201237;
+        }
+        
+    }
+}

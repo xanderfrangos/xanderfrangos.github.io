@@ -1,0 +1,11 @@
+@import "normalize";
+@import "vars";
+@import "responsive";
+@import "defaults";
+@import "sidebar";
+//@import "details-page";
+@import "portfolio";
+
+.defer {
+    visibility: hidden;
+}
