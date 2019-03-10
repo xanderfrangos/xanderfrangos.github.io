@@ -1,0 +1,16 @@
+@import "fonts/open-sans";
+@import "normalize";
+@import "vars";
+@import "responsive";
+clear, .clear {
+    &:after,
+    &:before {
+        content: ' ';
+        display: block;
+        clear: both;
+    }
+}
+//@import "defaults";
+//@import "sidebar";
+@import "portfolio";
+@import "extras";
