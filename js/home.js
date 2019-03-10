@@ -27,6 +27,11 @@ function tryScrollToAnchor(anchor) {
     }
 }
 
+$("a[target='_blank']").click(function(){
+    if(typeof ga !== "undefined") {
+        ga('send', 'event', 'User Action', 'External Link Clicked', $(this).attr("href"), 1);   
+    }
+});
 
 function init() {
     $("a").click(function(e) {
@@ -38,12 +43,20 @@ function init() {
         }
     });
     setInterval(monitorActiveMenuItem, 100);
+    setInterval(gaTrackingPing, 3000);
 }
 
 function monitorActiveMenuItem() {
     if(LastMenuChange + 1000 <= Date.now() && ActiveMenuItem != LastActiveMenuItem) {
         LastActiveMenuItem = ActiveMenuItem;
         setActiveMenuItem(ActiveMenuItem);
+    }
+}
+
+function gaTrackingPing() {
+    if(typeof ga !== "undefined") {
+        var scrollPerc = Math.floor( (((window.pageYOffset + window.innerHeight) / document.body.offsetHeight) * 100) / 20 ) * 20;
+        ga('send', 'event', 'Passive', 'Scroll Position', 'Scrolled ' + scrollPerc + '%', scrollPerc);   
     }
 }
 
