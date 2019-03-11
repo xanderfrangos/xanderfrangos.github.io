@@ -1,4 +1,33 @@
 .sidebar {
+    
+    position: fixed;
+    top:0;
+    left:0;
+    height: 100vh;
+    box-sizing: border-box;
+    z-index: 4;
+
+    @include appnav {
+        top: auto;
+        bottom: 0;
+        height: 40px;
+        width: 100%;
+        box-shadow: 0 4px 15px #19191f;
+    }
+
+    .inner {
+        background: white;
+        height: 100%;
+        box-sizing: border-box;
+        padding: 21px;
+        position: relative;
+        width: 217px;
+
+        @include appnav {
+            width: 100%;
+            padding: 4px 10px;
+        }
+    }
 
     nav {
         position: relative;
@@ -11,6 +40,7 @@
             margin: 0;
             flex-direction: row;
             flex-wrap: nowrap;
+            justify-content: center;
         }
         
         a {
@@ -92,6 +122,42 @@
                 z-index: 2;
             }
         }
+    }
+    
+    .footer {
+        position: absolute;
+        bottom: 21px;
+        left:0;
+        font-size: 11px;
+        color: #4F3A75;
+        text-align: center;
+        font-weight: 500;
+        width: 100%;
+
+        @include appnav {
+            display: none;
+        }
+
+        a {
+            color: #201237;
+            text-decoration: none;
+        }
+
+        span {
+            display: inline-block;
+            vertical-align: middle;
+            & + span {
+                margin-left: 8px;
+            }
+
+        }
+
+        svg {
+            width: 24px;
+            height: 24px;
+            fill: #201237;
+        }
+
     }
 
 }

@@ -37,7 +37,6 @@ body {
     
     width: 100%;
     min-height: 100vh;
-    //overflow: auto;
     padding-left: 300px;
     box-sizing: border-box;
     padding-right: 70px;
@@ -173,6 +172,37 @@ body {
         }
     }
     
+    .header-med {
+        font-weight: 700;
+        font-size: 48px;
+        padding-bottom: 0;
+        text-transform: uppercase;
+        padding-top: 40px;
+
+        @include appnav {
+            font-size: 32px;
+        }
+
+        & + p {
+            margin-top: -30px;
+            padding-top: 0;
+            padding-bottom: 30px;
+            padding-bottom: 40px;
+            color: $cTextDefault;
+            text-align: center;
+            font-size: 18px;
+
+            @include appnav {
+                margin-top: -20px;
+                font-size: 16px;
+            }
+
+            strong {
+                color: $cTextDefault;
+            }
+        }
+    }
+    
 }
 
 .page {
@@ -205,7 +235,26 @@ body {
         margin-top: -40px;
     }
     
+    &:before {
+        content: ' ';
+        display: none;
+        background: #33365a;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 245px;
 
+        @include appnav {
+            display: block;
+            height: 280px;
+            background-image: url(../media/bg.jpg);
+            background-size: cover;
+        }
+        @include mobile {
+            height: 175px;
+        }
+    }
     
     .me {
         border-radius: 100%;
@@ -246,7 +295,6 @@ body {
     }
 }
 
-
 p {
     line-height: 1.6;
 }
@@ -271,38 +319,43 @@ p {
     }
 }
 
-
-
 .sidebar {
-    //padding: 23px;
-    position: fixed;
-    top:0;
-    left:0;
-    height: 100vh;
-    box-sizing: border-box;
-    z-index: 4;
 
-    @include appnav {
-        top: auto;
-        bottom: 0;
-        height: 40px;
-        width: 100%;
-        box-shadow: 0 4px 15px #19191f;
+}
+
+
+#footer {
+    text-align: center;
+    p {
+        text-align: center;
+        font-size: 13px;
     }
-
-    .inner {
-        background: white;
-        //border-radius: 5px;
-        height: 100%;
-        box-sizing: border-box;
-        padding: 21px;
-        position: relative;
-        width: 217px;
-
-        @include appnav {
-            width: 100%;
-            padding: 4px 10px;
+    br {
+        display: block;
+        height: 3px;
+        content: ' ';
+    }
+    @media (max-width: 1180px) {
+        p {
+            font-size: 12px;
         }
-
+        br {
+            display: block;
+            height: 13px;
+            content: ' ';
+        }
     }
 }
+
+hr {
+    display: block;
+    width: 500px;
+    width: 100%;
+    max-width: 900px;
+    background: linear-gradient(to right, rgba(99,136,180,1) 0%,rgba(124,189,211,1) 100%);
+    background: rgba(white, 0.25);
+    height: 1px;
+    outline: none;
+    border: none;
+}
+
