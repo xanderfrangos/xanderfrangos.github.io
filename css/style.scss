@@ -1,11 +1,10 @@
-//@import "fonts/open-sans";
-//@import "normalize";
+@import "fonts/open-sans";
+@import "normalize";
 @import "vars";
 @import "responsive";
 @import "defaults";
 @import "sidebar";
-//@import "portfolio";
+@import "portfolio";
 
-.defer {
-    visibility: hidden;
-}
+// Deferred styles
+@import "extras";
