@@ -6,14 +6,28 @@
 
 // Post-load stuff
 
-
 #footer {
+    text-align: center;
     p {
         text-align: center;
         font-size: 13px;
     }
+    br {
+        display: block;
+        height: 3px;
+        content: ' ';
+    }
+    @media (max-width: 1180px) {
+        p {
+            font-size: 12px;
+        }
+        br {
+            display: block;
+            height: 13px;
+            content: ' ';
+        }
+    }
 }
-
 
 .text-center {
     text-align: center;
