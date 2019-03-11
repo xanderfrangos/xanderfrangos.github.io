@@ -135,7 +135,6 @@ body {
             &:after {
                 background: white;
                 transform: scale(0, 1);
-                transform-origin: 0 0;
                 transition: transform 0.43s cubic-bezier(0.185, 1, 0, 1);
                 will-change: transform;
             }
