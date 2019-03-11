@@ -141,6 +141,9 @@
         a {
             color: #201237;
             text-decoration: none;
+            &:hover{
+                opacity: 0.65;
+            }
         }
 
         span {
