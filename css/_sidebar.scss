@@ -101,6 +101,9 @@
             
             &:hover {
                 background: linear-gradient(to right, rgba(210,210,210,1) 0%, rgba(210,210,210,0) 60%, rgba(210,210,210,0) 100%);
+                @include tablet {
+                    background: none;
+                }
             }
             
             &.active {
