@@ -264,6 +264,7 @@ body {
         display: block;
         will-change: transform;
         box-shadow: 0 5px 10px -3px rgba(25, 22, 29, 0.3);
+        box-shadow: 0 13px 13px -3px rgba(25, 22, 29,0.3);
         background: linear-gradient(150deg, #dc781d 0%, #111f4c 90%, #111f4c 100%);
         
         @include appnav {
