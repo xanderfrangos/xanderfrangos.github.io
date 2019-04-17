@@ -243,25 +243,25 @@ body {
                 100% { opacity: 1; transform: translateY(0px); }
             }
             &.d0 {
-                animation-delay: -0.45s;
+                animation-delay: -0.30s;
             }
             &.d1 {
-                animation-delay: -0.40s;
-            }
-            &.d2 {
-                animation-delay: -0.35s;
-            }
-            &.d3 {
-                animation-delay: -0.3s;
-            }
-            &.d4 {
                 animation-delay: -0.25s;
             }
+            &.d2 {
+                animation-delay: -0.20s;
+            }
+            &.d3 {
+                animation-delay: -0.15s;
+            }
+            &.d4 {
+                animation-delay: -0.10s;
+            }
             &.d5 {
-                animation-delay: -0.2s;
+                animation-delay: -0.05s;
             }
             &.d6 {
-                animation-delay: -0.15s;
+                animation-delay: -0.0s;
             }
         }
     }
