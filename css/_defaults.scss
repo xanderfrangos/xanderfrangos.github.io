@@ -132,6 +132,7 @@ body {
                 height: 2px;
                 background: rgba(#7cbdd3, 1);
                 border-radius: 2px;
+                opacity: 0.4;
             }
             
             &:after {
@@ -139,6 +140,7 @@ body {
                 transform: scale(0, 1);
                 transition: transform 0.43s cubic-bezier(0.185, 1, 0, 1);
                 will-change: transform;
+                opacity: 1;
             }
         }
         

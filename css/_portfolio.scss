@@ -7,7 +7,7 @@
 
 .portfolio-item {
     width: 49.1%;
-    margin-bottom: 50px;
+    margin-bottom: 65px;
     
     @include tablet {
         width: 100%;
@@ -18,7 +18,7 @@
         width: 100%;
         max-width: 100%;
         height: auto;
-        margin-bottom: 20px;
+        margin-bottom: 25px;
         border-radius: 4px;
         box-shadow: 0 5px 10px -3px rgba(25, 22, 29, 0.3);
         transition: opacity 0.23s;
@@ -41,15 +41,19 @@
         }
         
     }
+    .tags {
+        margin-bottom: 10px;
+    }
     p {
         padding: 0;
         margin: 0;
-        line-height: 1.5;
+        line-height: 1.6;
         font-size: 16px;
+        font-size: 16.5px;
         text-align: left;
         
         @include appnav {
-            font-size: 15px;
+            font-size: 14px;
         }
         
     }
