@@ -234,6 +234,38 @@ body {
         margin-top: -40px;
     }
     
+    .narrow-wrapper {
+        .anim {
+            animation: meIn 1s -0.5s;
+            @keyframes meIn {
+                0% { opacity: 0; transform: translateY(20px); }
+                50% { opacity: 0; transform: translateY(20px); }
+                100% { opacity: 1; transform: translateY(0px); }
+            }
+            &.d0 {
+                animation-delay: -0.45s;
+            }
+            &.d1 {
+                animation-delay: -0.40s;
+            }
+            &.d2 {
+                animation-delay: -0.35s;
+            }
+            &.d3 {
+                animation-delay: -0.3s;
+            }
+            &.d4 {
+                animation-delay: -0.25s;
+            }
+            &.d5 {
+                animation-delay: -0.2s;
+            }
+            &.d6 {
+                animation-delay: -0.15s;
+            }
+        }
+    }
+    
     &:before {
         content: ' ';
         display: none;
