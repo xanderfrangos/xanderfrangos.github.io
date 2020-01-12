@@ -166,4 +166,4 @@ function updateScrollVarsRAF() {
 updateScrollVarsRAF();
 scrollEvents();
 
-$(window).scroll(rafEvent);
+window.addEventListener('scroll', rafEvent, {passive: true});
