@@ -14,7 +14,6 @@ function setActiveMenuItem(idx) {
 function setMenuItem(elem) {
     var id = elem.getAttribute("data-id");
     ActiveMenuItem = id;
-    setActiveMenuItem(ActiveMenuItem);
 }
 
 function unsetMenuItem(elem) {
@@ -25,7 +24,7 @@ function unsetMenuItem(elem) {
 function tryScrollToAnchor(anchor) {
     var el = document.querySelector(anchor);
     if(typeof el !== "undefined") {
-        var topPos = el.getBoundingClientRect().top + document.body.scrollTop;
+        var topPos = el.getBoundingClientRect().top + window.pageYOffset;
         goToScrollPos(topPos, 100);
     }
 }
