@@ -3,45 +3,51 @@ var LastActiveMenuItem = -1;
 var LastMenuChange = Date.now() - 1000;
 
 function setActiveMenuItem(idx) {
-    $("nav a").removeClass("active");
-    $("nav a").eq(Math.floor(idx, 0)).addClass("active");
+    document.querySelectorAll("nav a").forEach(function(el) {
+        el.classList.remove("active");
+    })
+    document.querySelectorAll("nav a")[Math.floor(idx, 0)].classList.add("active");
     ActiveMenuItem = Math.floor(idx, 0);
     LastMenuChange = Date.now();
 }
 
 function setMenuItem(elem) {
-    var id = $(elem).eq(0).attr("data-id");
+    var id = elem.getAttribute("data-id");
     ActiveMenuItem = id;
-    //setActiveMenuItem(id);
 }
 
 function unsetMenuItem(elem) {
-    var id = $(elem).eq(0).attr("data-id") - 1; 
+    var id = elem.getAttribute("data-id") - 1;
     ActiveMenuItem = id;
-    //setActiveMenuItem(id);
 }
 
 function tryScrollToAnchor(anchor) {
-    if($(anchor).length > 0) {
-        goToScrollPos($(anchor).offset().top, 100);
+    var el = document.querySelector(anchor);
+    if(typeof el !== "undefined") {
+        var topPos = el.getBoundingClientRect().top + document.body.scrollTop;
+        goToScrollPos(topPos, 100);
     }
 }
 
-$("a[target='_blank']").click(function(){
-    if(typeof ga !== "undefined") {
-        ga('send', 'event', 'User Action', 'External Link Clicked', $(this).attr("href"), 1);   
-    }
-});
+document.querySelectorAll("a[target='_blank']").forEach(function(el){
+    el.addEventListener('click',function(){
+        if(typeof ga !== "undefined") {
+            ga('send', 'event', 'User Action', 'External Link Clicked', el.getAttribute("href"), 1);   
+        }
+    })
+})
 
 function init() {
-    $("a").click(function(e) {
-        if($(this).attr("href").charAt(0) == "#") {
-            e.preventDefault();
-            LastMenuChange = Date.now() - 200; // Delay processing sidebar so the wrong active item isn't picked 
-            tryScrollToAnchor($(this).attr("href"));
-            return false;
-        }
-    });
+    document.querySelectorAll("a").forEach(function(el){
+        el.addEventListener('click',function(e){
+            if(el.getAttribute("href").charAt(0) == "#") {
+                e.preventDefault();
+                LastMenuChange = Date.now() - 200; // Delay processing sidebar so the wrong active item isn't picked 
+                tryScrollToAnchor(el.getAttribute("href"));
+                return false;
+            }
+        })
+    })
     setInterval(monitorActiveMenuItem, 100);
     setInterval(gaTrackingPing, 3000);
 }
