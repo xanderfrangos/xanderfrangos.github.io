@@ -14,6 +14,7 @@ function setActiveMenuItem(idx) {
 function setMenuItem(elem) {
     var id = elem.getAttribute("data-id");
     ActiveMenuItem = id;
+    setActiveMenuItem(ActiveMenuItem);
 }
 
 function unsetMenuItem(elem) {
