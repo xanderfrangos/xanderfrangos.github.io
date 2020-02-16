@@ -26,8 +26,8 @@ function getOffset(el) {
     try {
         var rect = el.getBoundingClientRect();
         return {
-          top: rect.top + document.body.scrollTop,
-          left: rect.left + document.body.scrollLeft
+          top: rect.top + window.pageYOffset,
+          left: rect.left + window.pageXOffset
         }
     } catch (e) {
         return {top: null, left: null}
@@ -89,6 +89,7 @@ function checkScrolledPast() {
     }
     if (scrollVars.checkEnteredBottom !== undefined) {
         scrollVars.checkEnteredBottom.forEach(function (el) {
+
             var offsetVal = el.getAttribute("data-offset");
 
             offsetVal = (offsetVal === undefined ? 0 : offsetVal);
