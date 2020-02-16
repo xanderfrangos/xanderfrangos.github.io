@@ -22,125 +22,137 @@ function scrollEvents() {
 
 updateScrollVars();
 
+function getOffset(el) {
+    try {
+        var rect = el.getBoundingClientRect();
+        return {
+          top: rect.top + document.body.scrollTop,
+          left: rect.left + document.body.scrollLeft
+        }
+    } catch (e) {
+        return {top: null, left: null}
+    }
+}
+
 function checkScrolledPast() {
     if (scrollVars.checkItems !== undefined) {
-        scrollVars.checkItems.each(function () {
-            var offsetVal = $(this).attr("data-offset");
-            var untriggerEvent = ($(this).attr("data-untriggerEvent") === undefined ? "" : $(this).attr("data-untriggerEvent"));
-            var triggerEvent = ($(this).attr("data-triggerEvent") === undefined ? "" : $(this).attr("data-triggerEvent"));
+        scrollVars.checkItems.forEach(function (el) {
+            var offsetVal = el.getAttribute("data-offset");
+            var untriggerEvent = (el.getAttribute("data-untriggerEvent") === undefined ? "" : el.getAttribute("data-untriggerEvent"));
+            var triggerEvent = (el.getAttribute("data-triggerEvent") === undefined ? "" : el.getAttribute("data-triggerEvent"));
 
             offsetVal = (offsetVal === undefined ? 0 : offsetVal);
 
-            if ($(this).offset().top - offsetVal < window.pageYOffset) {
-                if (!$(this).hasClass("scrolledPast")) {
+            if (getOffset(el).top - offsetVal < window.pageYOffset) {
+                if (!el.classList.contains("scrolledPast")) {
                     if (triggerEvent.length > 0)
-                        window[triggerEvent](this);
+                        window[triggerEvent](el);
 
-                    $(this).addClass("scrolledPast");
+                    el.classList.add("scrolledPast");
                 }
             } else {
-                if ($(this).hasClass("scrolledPast")) {
+                if (el.classList.contains("scrolledPast")) {
                     if (untriggerEvent.length > 0)
-                        window[untriggerEvent](this);
+                        window[untriggerEvent](el);
 
-                    $(this).removeClass("scrolledPast");
+                    el.classList.remove("scrolledPast");
                 }
             }
         });
     }
     if (scrollVars.checkAfter !== undefined) {
-        scrollVars.checkAfter.each(function () {
-            var offsetVal = $(this).attr("data-offset");
+        scrollVars.checkAfter.forEach(function (el) {
+            var offsetVal = el.getAttribute("data-offset");
 
             offsetVal = (offsetVal === undefined ? 0 : offsetVal);
 
-            var untriggerEvent = ($(this).attr("data-untriggerEvent") === undefined ? "" : $(this).attr("data-untriggerEvent"));
-            var triggerEvent = ($(this).attr("data-triggerEvent") === undefined ? "" : $(this).attr("data-triggerEvent"));
+            var untriggerEvent = (el.getAttribute("data-untriggerEvent") === undefined ? "" : el.getAttribute("data-untriggerEvent"));
+            var triggerEvent = (el.getAttribute("data-triggerEvent") === undefined ? "" : el.getAttribute("data-triggerEvent"));
 
-            if ($(this).offset().top + $(this).innerHeight() - offsetVal < window.pageYOffset + window.innerHeight) {
+            if (getOffset(el).top + el.offsetHeight - offsetVal < window.pageYOffset + window.innerHeight) {
 
-                if (!$(this).hasClass("scrolledAfter")) {
+                if (!el.classList.contains("scrolledAfter")) {
                     if (triggerEvent.length > 0)
-                        window[triggerEvent](this);
+                        window[triggerEvent](el);
 
-                    $(this).addClass("scrolledAfter");
+                    el.classList.add("scrolledAfter");
                 }
             } else {
-                if ($(this).hasClass("scrolledAfter")) {
+                if (el.classList.contains("scrolledAfter")) {
                     if (untriggerEvent.length > 0)
-                        window[untriggerEvent](this);
+                        window[untriggerEvent](el);
 
-                    $(this).removeClass("scrolledAfter");
+                    el.classList.remove("scrolledAfter");
                 }
             }
         });
     }
     if (scrollVars.checkEnteredBottom !== undefined) {
-        scrollVars.checkEnteredBottom.each(function () {
-            var offsetVal = $(this).attr("data-offset");
+        scrollVars.checkEnteredBottom.forEach(function (el) {
+            var offsetVal = el.getAttribute("data-offset");
 
             offsetVal = (offsetVal === undefined ? 0 : offsetVal);
 
-            var untriggerEvent = ($(this).attr("data-untriggerEvent") === undefined ? "" : $(this).attr("data-untriggerEvent"));
-            var triggerEvent = ($(this).attr("data-triggerEvent") === undefined ? "" : $(this).attr("data-triggerEvent"));
+            var untriggerEvent = (el.getAttribute("data-untriggerEvent") === undefined ? "" : el.getAttribute("data-untriggerEvent"));
+            var triggerEvent = (el.getAttribute("data-triggerEvent") === undefined ? "" : el.getAttribute("data-triggerEvent"));
 
-            if ($(this).offset().top - offsetVal < window.pageYOffset + window.innerHeight) {
+            if (getOffset(el).top - offsetVal < window.pageYOffset + window.innerHeight) {
                 
-                if (!$(this).hasClass("scrolledEnteredBottom")) {
+                if (!el.classList.contains("scrolledEnteredBottom")) {
                     if (triggerEvent.length > 0)
-                        window[triggerEvent](this);
+                        window[triggerEvent](el);
 
-                    $(this).addClass("scrolledEnteredBottom");
+                    el.classList.add("scrolledEnteredBottom");
                 }
         
             } else {
                 
-                if ($(this).hasClass("scrolledEnteredBottom")) {
+                if (el.classList.contains("scrolledEnteredBottom")) {
                     if (untriggerEvent.length > 0)
-                        window[untriggerEvent](this);
+                        window[untriggerEvent](el);
 
-                    $(this).removeClass("scrolledEnteredBottom");
+                    el.classList.remove("scrolledEnteredBottom");
                 }
                 
             }
         });
     }
     if (scrollVars.checkFromTop !== undefined) {
-        scrollVars.checkFromTop.each(function () {
-            var offsetVal = $(this).attr("data-offset");
+        scrollVars.checkFromTop.forEach(function (el) {
+            var offsetVal = el.getAttribute("data-offset");
 
             offsetVal = (offsetVal === undefined ? 0 : offsetVal);
 
-            if ($(this).offset().top - offsetVal < window.pageYOffset) {
-                $(this).addClass("scrolledFromTop");
+            if (getOffset(el).top - offsetVal < window.pageYOffset) {
+                el.classList.add("scrolledFromTop");
             } else {
-                $(this).removeClass("scrolledFromTop");
+                el.classList.remove("scrolledFromTop");
             }
         });
     }
 
     if (scrollVars.checkVisible !== undefined) {
-        scrollVars.checkVisible.each(function () {
-            var offsetVal = $(this).attr("data-offset");
+        scrollVars.checkVisible.forEach(function (el) {
+            var offsetVal = el.getAttribute("data-offset");
             offsetVal = (offsetVal === undefined ? 0 : offsetVal);
 
-            var untriggerEvent = ($(this).attr("data-untriggerEvent") === undefined ? "" : $(this).attr("data-untriggerEvent"));
-            var triggerEvent = ($(this).attr("data-triggerEvent") === undefined ? "" : $(this).attr("data-triggerEvent"));
+            var untriggerEvent = (el.getAttribute("data-untriggerEvent") === undefined ? "" : el.getAttribute("data-untriggerEvent"));
+            var triggerEvent = (el.getAttribute("data-triggerEvent") === undefined ? "" : el.getAttribute("data-triggerEvent"));
 
-            if (!($(this).offset().top + $(this).innerHeight() + offsetVal < window.pageYOffset || $(this).offset().top - offsetVal > window.pageYOffset + window.innerHeight)) {
+            if (!(getOffset(el).top + el.offsetHeight + offsetVal < window.pageYOffset || getOffset(el).top - offsetVal > window.pageYOffset + window.innerHeight)) {
 
-                if (!$(this).hasClass("isVisible")) {
+                if (!el.classList.contains("isVisible")) {
                     if (triggerEvent.length !== "")
-                        window[triggerEvent](this);
+                        window[triggerEvent](el);
 
-                    $(this).addClass("isVisible");
+                    el.classList.add("isVisible");
                 }
             } else {
-                if ($(this).hasClass("isVisible")) {
+                if (el.classList.contains("isVisible")) {
                     if (untriggerEvent.length > 0)
-                        window[untriggerEvent](this);
+                        window[untriggerEvent](el);
 
-                    $(this).removeClass("isVisible");
+                    el.classList.remove("isVisible");
                 }
             }
         });
@@ -150,13 +162,13 @@ function checkScrolledPast() {
 setInterval(updateScrollVarsRAF, 1000);
 
 function updateScrollVars() {
-    scrollVars.scrollTop = $(window).scrollTop();
-    scrollVars.window = $(window);
-    scrollVars.checkItems = $(".checkScrolled");
-    scrollVars.checkAfter = $(".checkAfter");
-    scrollVars.checkEnteredBottom = $(".checkEnteredBottom");
-    scrollVars.checkFromTop = $(".checkFromTop");
-    scrollVars.checkVisible = $(".checkVisible");
+    scrollVars.scrollTop = document.body.scrollTop;
+    scrollVars.window = window;
+    scrollVars.checkItems = document.querySelectorAll(".checkScrolled");
+    scrollVars.checkAfter = document.querySelectorAll(".checkAfter");
+    scrollVars.checkEnteredBottom = document.querySelectorAll(".checkEnteredBottom");
+    scrollVars.checkFromTop = document.querySelectorAll(".checkFromTop");
+    scrollVars.checkVisible = document.querySelectorAll(".checkVisible");
 }
 
 function updateScrollVarsRAF() {
