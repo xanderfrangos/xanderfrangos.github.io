@@ -2,6 +2,10 @@ var ActiveMenuItem = 0;
 var LastActiveMenuItem = -1;
 var LastMenuChange = Date.now() - 1000;
 
+if (typeof NodeList.prototype.forEach !== 'function')  {
+    NodeList.prototype.forEach = Array.prototype.forEach;
+}
+
 function setActiveMenuItem(idx) {
     document.querySelectorAll("nav a").forEach(function(el) {
         el.classList.remove("active");
